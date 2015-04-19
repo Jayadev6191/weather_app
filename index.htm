@@ -7,6 +7,8 @@
 
         <!-- load bootstrap and fontawesome via CDN -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <style>
             html, body, input, select, textarea
             {
@@ -31,7 +33,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
-					<li><a href="#/main"><i class="fa fa-home"></i> Main</a></li>
+					<li><a href="#/main"> Main</a></li>
 				</ul>
 			</div>
 			</nav>
@@ -39,9 +41,9 @@
         <div class="container" id="main">
 			<div ng-view></div>
 		</div>
-		<script src="app.js"></script>
-		<script src="services/weatherService.js"></script>
+		<script src="build/js/script.js"></script>
+		<!-- <script src="services/weatherService.js"></script>
         <script src="controllers/homeController.js"></script>
-        <script src="controllers/mainController.js"></script>
+        <script src="controllers/mainController.js"></script> -->
     </body>
 </html>

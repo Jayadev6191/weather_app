@@ -18,8 +18,8 @@ weatherApp.controller('MainCtrl',['$scope','$resource','$routeParams','weatherSe
 		return Math.round((degK-272.15));
 	};
 	
+	
 	$scope.covertToDate=function(dt){
 		return new Date(dt * 1000);
-	};
-		
+	};	
 }]);

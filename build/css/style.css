@@ -1,0 +1,27 @@
+body{
+	background:url('../images/sky.jpg')
+	
+}
+
+.panel{
+	width: 70%;
+}
+
+.panel > .panel-heading,.panel > .panel-body{
+	background-color:#202020;
+	color:white;
+}
+
+#forecast-container{
+	color:white;
+}
+
+#forecast{
+	width: 70%;
+	margin-left:25%;
+}
+
+#forecast i{
+	float:right;
+	color: yellow;
+}
