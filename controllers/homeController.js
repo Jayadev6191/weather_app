@@ -6,7 +6,6 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','weatherService',function
 	
 	$scope.$watch('city',function(){
 		weatherService.city=$scope.city;
-		console.log(weatherService.city);
 	});
 	
 }]);

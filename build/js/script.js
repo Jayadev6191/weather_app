@@ -18,12 +18,12 @@ weatherApp.config(function ($routeProvider) {
 
 
 
-weatherApp.service('weatherService',function(){
+weatherApp.service('weatherService',[function(){
 	// rest call
 	this.city="Santa Clara,CA";
 	console.log('weather service called');
 	
-});
+}]);
 
 weatherApp.controller('HomeCtrl',['$scope','$resource','weatherService',function($scope,$resource,weatherService){
 
@@ -33,7 +33,6 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','weatherService',function
 	
 	$scope.$watch('city',function(){
 		weatherService.city=$scope.city;
-		console.log(weatherService.city);
 	});
 	
 }]);
