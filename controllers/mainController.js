@@ -1,4 +1,4 @@
-weatherApp.controller('MainCtrl',['$scope','$resource','$routeParams','weatherService',function($scope,$resource,$routeParams,weatherService){
+weatherA pp.controller('MainCtrl',['$scope','$resource','$routeParams','weatherService',function($scope,$resource,$routeParams,weatherService){
 	$scope.city=weatherService.city;
 	$scope.days=$routeParams.days || 2;
 	

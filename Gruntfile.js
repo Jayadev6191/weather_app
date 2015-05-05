@@ -23,11 +23,20 @@ module.exports=function(grunt){
 		      tasks: ['concat:css'],
 		    },
 		},
+		
+
+		karma: { 
+				unit: { 
+					configFile:'karma.conf.js'
+				}
+		}
+
 	});
 	
+	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	
-	grunt.registerTask('default', ['concat','watch']);
+	grunt.registerTask('default', ['karma','concat','watch']);
 	
 };
