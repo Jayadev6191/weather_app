@@ -49,7 +49,9 @@ weatherApp.controller('MainCtrl',['$scope','$resource','$routeParams','weatherSe
 					method:"JSONP"
 				}
 		});
-		
+	
+	
+	$scope.a=10;
 	$scope.weatherResult=$scope.weatherAPI.get({q:$scope.city,cnt:$scope.days});
 	
 	$scope.covertToCelsius=function(degK){

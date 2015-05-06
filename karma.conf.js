@@ -15,10 +15,14 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'spec/*.js',
-      'http://code.angularjs.org/1.3.0-rc.2/angular.min.js',
-      'http://code.angularjs.org/1.3.0-rc.2/angular-route.min.js',
-      'http://code.angularjs.org/1.3.0-rc.2/angular-resource.min.js'
+      'bower_components/angular/angular.js',
+      'bower_components/angular-route/angular-route.js',
+      'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angular-resource/angular-resource.js',
+      'app.js',
+      'controllers/*.js',
+      'services/weatherServices.js',
+      'spec/controllers/*.js'
     ],
 
     // list of files to exclude
@@ -34,7 +38,6 @@ module.exports = function(config) {
 	plugins: [
       'karma-coverage',
       'karma-jasmine',
-      'karma-phantomjs-launcher',
       'karma-chrome-launcher'
     ],
 
@@ -63,7 +66,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome','PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode

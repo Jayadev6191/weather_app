@@ -22,6 +22,9 @@ module.exports=function(grunt){
 		      files: ['assets/css/*.css'],
 		      tasks: ['concat:css'],
 		    },
+		    spec:{
+		    	files:['spec/controllers/home_controller_spec.js']
+		    }
 		},
 		
 
