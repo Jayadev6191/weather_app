@@ -1,8 +1,17 @@
+'use strict';
+ 
+var
+  LIVERELOAD_PORT = 35729,
+  lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT }),
+  mountFolder = function( connect, dir ) {
+    return connect.static(require('path').resolve(dir));
+  };
+  
 module.exports=function(grunt){
 	grunt.initConfig({
 	  concat: {
 	    js:{
-	    	src:['app.js','services/weatherService.js','controllers/homeController.js','controllers/mainController.js'],
+	    	src:['app.js','services/weatherService.js','controllers/*.js'],
 	    	dest:'build/js/script.js'
 	    },
 	    css:{
@@ -15,12 +24,15 @@ module.exports=function(grunt){
       			livereload: true,
     		},
 		    js: {
-		      files: ['app.js','services/weatherService.js','controllers/*.js'],
+		      files: ['app.js','services/*.js','controllers/*.js'],
 		      tasks: ['concat:js'],
 		    },
 		    css: {
 		      files: ['assets/css/*.css'],
 		      tasks: ['concat:css'],
+		    },
+		    html:{
+		    	files: ['partials/*.html'],
 		    },
 		    spec:{
 		    	files:['spec/controllers/home_controller_spec.js']

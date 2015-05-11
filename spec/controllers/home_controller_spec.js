@@ -1,7 +1,8 @@
-describe("dummyController",function(){
+describe("HomeCtrl",function(){
 	var $rootScope,
 		$scope,
-		controller;
+		controller,
+		mockWeatherService;
 	
 	beforeEach(function(){
 		module('weatherApp');
@@ -9,24 +10,39 @@ describe("dummyController",function(){
 		inject(function($injector){
 			$rootScope=$injector.get('$rootScope');
 			$scope=$rootScope.$new();
-			controller=$injector.get('$controller')('dummyController',{$scope:$scope});
-		});
-		
-	});
-	
-	describe('a',function(){
-		it('should be 10',function(){
-			expect($scope.a).toEqual(10);
+			controller=$injector.get('$controller')('HomeCtrl',{$scope:$scope});
 		});
 	});
 	
-	
-	describe('b',function(){
-		it('should be 8',function(){
-			$scope.error();
-			expect($scope.b).toEqual(12);
+	describe('city to be defined',function(){
+		it('city should always be defined',function(){
+			expect($scope.city).toBeDefined();
 		});
 	});
+	
+	
+	// it('should watch city name', function() {
+		// // make an initial selection
+		// $scope.city = 'Santa Clara,CA';
+		// $scope.$digest();
+// 
+		// // make another one
+		// $scope.city = 'San Jose,CA';
+		// $scope.$digest();
+// 
+		// // simulate a ng-change which should revert to the previous value
+		// expect($scope.city).toEqual('San Jose,CA');
+	// }); 
+
+	
+	describe('redirect',function(){
+		it('should redirect to stackoverflow website',function(){
+			$scope.redirect();
+			expect($scope.link).toEqual("http://stackoverflow.com");
+		});
+	});
+	
+
 	
 	
 });

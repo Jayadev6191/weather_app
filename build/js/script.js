@@ -25,8 +25,14 @@ weatherApp.service('weatherService',[function(){
 	
 }]);
 
+weatherApp.controller('dummyController',['$scope',function($scope){
+	$scope.a=10;
+	
+	$scope.error=function(){
+		$scope.b=12;
+	};
+}]);
 weatherApp.controller('HomeCtrl',['$scope','$resource','weatherService',function($scope,$resource,weatherService){
-
 	$scope.city=weatherService.city;
 	
 	// Watch city name and update city inside weatherService. It is read by mainController.
@@ -35,8 +41,13 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','weatherService',function
 		weatherService.city=$scope.city;
 	});
 	
+	$scope.redirect=function(){
+		$scope.link="http://stackoverflow.com";
+		window.location.replace($scope.link);
+	};
+	
 }]);
-weatherApp.controller('MainCtrl',['$scope','$resource','$routeParams','weatherService',function($scope,$resource,$routeParams,weatherService){
+weatherApp.controller('MainCtrl',['$scope','$resource','$routeParams','weatherService','renderChart',function($scope,$resource,$routeParams,weatherService,renderChart){
 	$scope.city=weatherService.city;
 	$scope.days=$routeParams.days || 2;
 	
@@ -51,15 +62,25 @@ weatherApp.controller('MainCtrl',['$scope','$resource','$routeParams','weatherSe
 		});
 	
 	
-	$scope.a=10;
 	$scope.weatherResult=$scope.weatherAPI.get({q:$scope.city,cnt:$scope.days});
+	$scope.weatherResult.$promise.then(function(data){
+		console.log(data.list);
+	});
+	
 	
 	$scope.covertToCelsius=function(degK){
 		return Math.round((degK-272.15));
 	};
 	
-	
 	$scope.covertToDate=function(dt){
 		return new Date(dt * 1000);
-	};	
+	};
+	
+		
+	$scope.redirect=function(){
+		$scope.link="https://github.com/novus/nvd3";
+		window.location.href=$scope.link;
+	};
+	
+	
 }]);

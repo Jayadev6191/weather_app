@@ -1,5 +1,6 @@
 body{
-	background:url('../images/sky.jpg')
+	/*background:url('../images/sky.jpg');*/
+	max-width:100%;
 	
 }
 
@@ -25,3 +26,8 @@ body{
 	float:right;
 	color: yellow;
 }
+
+#chart svg {
+  height: 400px;
+}
+
