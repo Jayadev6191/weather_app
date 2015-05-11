@@ -18,6 +18,57 @@ weatherApp.config(function ($routeProvider) {
 
 
 
+weatherApp.factory('renderChart',function(){
+	return {
+		renderUtilChart:function(){
+		console.log('renderChart called inside');
+		function data() {
+		  var sin = [],
+		      cos = [];
+		
+		  for (var i = 0; i < 100; i++) {
+		    sin.push({x: i, y: Math.sin(i/5)});
+		  }
+		
+		  return [
+		    {
+		      values: sin,
+		      key: 'Sine Wave',
+		      color: '#a27f00'
+		    },
+		    
+		  ];
+		}
+
+		nv.addGraph(function(){
+		  var chart = nv.models.lineChart()
+		  	.showXAxis(true)
+		  	.showYAxis(true)
+		    .interactive(true)
+		    .tooltips(true)
+		    .showLegend(false);
+		    
+		  chart.xAxis
+		    .axisLabel('Time (ms)')
+		    .tickFormat(d3.format(',r'));
+		
+		  chart.yAxis
+		    .axisLabel('Voltage (v)')
+		    .tickFormat(d3.format('.02f'));
+		
+		  d3.select('#chart svg')
+		    .datum(data())
+		    .transition().duration(500)
+		    .call(chart);
+		
+		  nv.utils.windowResize(chart.update);
+		
+		  return chart;
+		  });
+		}
+	};
+});
+
 weatherApp.service('weatherService',[function(){
 	// rest call
 	this.city="Santa Clara,CA";
@@ -25,13 +76,6 @@ weatherApp.service('weatherService',[function(){
 	
 }]);
 
-weatherApp.controller('dummyController',['$scope',function($scope){
-	$scope.a=10;
-	
-	$scope.error=function(){
-		$scope.b=12;
-	};
-}]);
 weatherApp.controller('HomeCtrl',['$scope','$resource','weatherService',function($scope,$resource,weatherService){
 	$scope.city=weatherService.city;
 	
@@ -81,6 +125,8 @@ weatherApp.controller('MainCtrl',['$scope','$resource','$routeParams','weatherSe
 		$scope.link="https://github.com/novus/nvd3";
 		window.location.href=$scope.link;
 	};
+	
+	renderChart.renderUtilChart();
 	
 	
 }]);

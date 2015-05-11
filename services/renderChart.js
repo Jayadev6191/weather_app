@@ -1,5 +1,7 @@
 weatherApp.factory('renderChart',function(){
-	renderUtilChart=function(){
+	return {
+		renderUtilChart:function(){
+		console.log('renderChart called inside');
 		function data() {
 		  var sin = [],
 		      cos = [];
@@ -22,7 +24,7 @@ weatherApp.factory('renderChart',function(){
 		  var chart = nv.models.lineChart()
 		  	.showXAxis(true)
 		  	.showYAxis(true)
-		    .interactive(false)
+		    .interactive(true)
 		    .tooltips(true)
 		    .showLegend(false);
 		    
@@ -42,8 +44,7 @@ weatherApp.factory('renderChart',function(){
 		  nv.utils.windowResize(chart.update);
 		
 		  return chart;
-		});
+		  });
+		}
 	};
-	
-	return renderUtilChart;
 });

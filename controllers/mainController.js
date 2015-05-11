@@ -33,5 +33,7 @@ weatherApp.controller('MainCtrl',['$scope','$resource','$routeParams','weatherSe
 		window.location.href=$scope.link;
 	};
 	
+	renderChart.renderUtilChart();
+	
 	
 }]);

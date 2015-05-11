@@ -11,7 +11,7 @@ module.exports=function(grunt){
 	grunt.initConfig({
 	  concat: {
 	    js:{
-	    	src:['app.js','services/weatherService.js','controllers/*.js'],
+	    	src:['app.js','services/*.js','controllers/*.js'],
 	    	dest:'build/js/script.js'
 	    },
 	    css:{

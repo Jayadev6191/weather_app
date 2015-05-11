@@ -10,7 +10,7 @@ describe('it should show tooltips correctly',function(){
 		});
 	});
 	
-	it('should have tooltips and intreactive options to be truthy',function(){
+	it('should have tooltips and interactive options to be truthy',function(){
 		nv.addGraph();
 		expect(nv.models.lineChart().interactive()).toBeTruthy();
 		expect(nv.models.lineChart().tooltips()).toBeTruthy();
@@ -20,4 +20,7 @@ describe('it should show tooltips correctly',function(){
 		$scope.redirect();
 		expect($scope.link).toEqual('https://github.com/novus/nvd3');
 	});
+	
+	
+	
 });
