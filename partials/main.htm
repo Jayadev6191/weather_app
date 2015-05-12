@@ -1,4 +1,15 @@
 <div id="forecast-container">
+	<div class="btn-group" role="group" aria-label="...">
+		<button type="button" class="btn btn-default">
+			Left
+		</button>
+		<button type="button" class="btn btn-default">
+			Middle
+		</button>
+		<button type="button" class="btn btn-default">
+			Right
+		</button>
+	</div>
 	<div id="forecast">
 		Forecast for {{city}}
 		<div ng-repeat="w in weatherResult.list">
@@ -13,16 +24,13 @@
 							Daytime Temperature:{{covertToCelsius(w.temp.day)}} &#8451;
 							<i class="fa fa-sun-o"></i>
 						</div>
-						
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<div id="chart" ng-click="redirect()">
-			<svg></svg>
-		</div>
 	</div>
 	
-	<!-- <div><button class="btn btn-danger" id="refresh">Refresh</button></div> -->
+	<div id="chart" ng-click="redirect()">
+		<svg></svg>
+	</div>
 </div>

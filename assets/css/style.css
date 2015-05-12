@@ -31,3 +31,11 @@ body{
   height: 400px;
 }
 
+
+ol li a{
+	color:#000;
+}
+
+ol li.active a{
+	color:lightblue;
+}
