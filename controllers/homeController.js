@@ -1,10 +1,10 @@
-weatherApp.controller('HomeCtrl',['$scope','$resource','weatherService',function($scope,$resource,weatherService){
-	$scope.city=weatherService.city;
+weatherApp.controller('HomeCtrl',['$scope','$resource','WeatherService',function($scope,$resource,WeatherService){
+	$scope.city=WeatherService.city;
 	
 	// Watch city name and update city inside weatherService. It is read by mainController.
 	
 	$scope.$watch('city',function(){
-		weatherService.city=$scope.city;
+		WeatherService.city=$scope.city;
 	});
 	
 	$scope.redirect=function(){

@@ -1,17 +1,31 @@
 <div id="forecast-container">
 	<div class="btn-group" role="group" aria-label="...">
-		<button type="button" class="btn btn-default">
-			Left
+		<button type="button" class="btn btn-default active" ng-click="time('day')">
+			Day
 		</button>
-		<button type="button" class="btn btn-default">
-			Middle
+		<button type="button" class="btn btn-default" ng-click="time('evening')">
+			Evening
 		</button>
-		<button type="button" class="btn btn-default">
-			Right
+		<button type="button" class="btn btn-default" ng-click="time('night')">
+			Night
 		</button>
 	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3" id="weather_query_form">
+			<h3 style="color:black">Forecast by city: {{city}}</h3>
+			<div class="form-group">
+				<label><small>City name</small></label>
+				<input type="text" ng-model="city" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label><small>Forcast for number of days (max 16 days from today)</small></label>
+				<input type="text" ng-model="days" class="form-control" value={{days}}/>
+			</div>
+			<a class="btn btn-danger" ng-click="getForecast()">Get Forecast</a>
+		</div>
+	</div>
 	<div id="forecast">
-		Forecast for {{city}}
+		<br>
 		<div ng-repeat="w in weatherResult.list">
 			<div class="row">
 				<div class="col-md-12">
@@ -20,7 +34,7 @@
 							<h3 class="panel-title">{{covertToDate(w.dt) | date: 'MMM d, y'}}</h3>
 						</div>
 						
-						<div class="panel-body">
+						<div class="panel-body" ng-if="time('day')">
 							Daytime Temperature:{{covertToCelsius(w.temp.day)}} &#8451;
 							<i class="fa fa-sun-o"></i>
 						</div>
@@ -30,7 +44,7 @@
 		</div>
 	</div>
 	
-	<div id="chart" ng-click="redirect()">
+	<!-- <div id="chart" ng-click="redirect()">
 		<svg></svg>
-	</div>
+	</div> -->
 </div>

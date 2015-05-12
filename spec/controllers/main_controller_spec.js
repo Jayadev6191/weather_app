@@ -15,12 +15,5 @@ describe('it should show tooltips correctly',function(){
 		expect(nv.models.lineChart().interactive()).toBeTruthy();
 		expect(nv.models.lineChart().tooltips()).toBeTruthy();
 	});
-	
-	it('should redirect to the correct page',function(){
-		$scope.redirect();
-		expect($scope.link).toEqual('https://github.com/novus/nvd3');
-	});
-	
-	
-	
+		
 });

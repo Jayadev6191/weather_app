@@ -39,3 +39,11 @@ ol li a{
 ol li.active a{
 	color:lightblue;
 }
+
+#weather_query_form h4{
+	color:black;
+}
+
+#weather_query_form label{
+	color:black;
+}
