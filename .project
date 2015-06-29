@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>weather</name>
+=======
+	<name>weather_app</name>
+>>>>>>> a215df6b67155910c4da3f41c1d0efe1238f593b
 	<comment></comment>
 	<projects>
 	</projects>

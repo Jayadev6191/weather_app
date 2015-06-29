@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -21,10 +22,28 @@ app.use('/users', users);
 
 app.get('/',function(req,res){
 	console.log('hi');
+=======
+var weatherApp=angular.module('weatherApp',['ngRoute','ngResource']);
+
+//routes
+
+weatherApp.config(function ($routeProvider) {
+    $routeProvider.when('/', {
+        templateUrl: 'partials/home.htm',
+        controller: 'HomeCtrl'
+      }).when('/main', {
+        templateUrl: 'partials/main.htm',
+        controller: 'MainCtrl'
+      }).when('/main/:days', {
+        templateUrl: 'partials/main.htm',
+        controller: 'MainCtrl'
+      });
+>>>>>>> a215df6b67155910c4da3f41c1d0efe1238f593b
 });
 
 
 
+<<<<<<< HEAD
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -37,3 +56,5 @@ app.use(function(req, res, next) {
 
 module.exports = app;
 app.listen(3000);
+=======
+>>>>>>> a215df6b67155910c4da3f41c1d0efe1238f593b

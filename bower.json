@@ -1,0 +1,16 @@
+{
+  "name": "weather_app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Jayadev6191/weather_app",
+  "authors": [
+    "Jayadev"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
