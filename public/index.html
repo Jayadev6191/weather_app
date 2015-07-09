@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en-us" ng-app="weatherApp">
     <head>
-    	<base href="/">
+    	<base href="/weather">
         <title>AngularJS Weather Forecast SPA</title>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta charset="UTF-8">
@@ -24,28 +24,15 @@
         
     </head>
     <body>
-
-        <header>
-			<nav class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="/">AngularJS Weather</a>
-				</div>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-					<li><a href="/main"> Main</a></li>
-				</ul>
-			</div>
-			</nav>
-		</header>
         <div class="container" id="main">
 			<div ng-view></div>
 		</div>
 		<!-- <script src="build/js/script.js"></script> -->
 		<script src="app.js"></script>
-		<script src="services/weatherService.js"></script>
-        <script src="controllers/homeController.js"></script>
+		<script src="controllers/homeController.js"></script>
         <script src="controllers/mainController.js"></script>
+		<script src="services/weatherService.js"></script>
+		<script src="services/stateService.js"></script>
+		<script src="services/cityService.js"></script>
     </body>
 </html>

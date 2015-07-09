@@ -1,25 +1,26 @@
-weatherApp.controller('MainCtrl',['$scope','$resource','$routeParams','weatherService',function($scope,$resource,$routeParams,weatherService){
-	$scope.city=weatherService.city;
-	$scope.days=$routeParams.days || 2;
-	
-	$scope.weatherAPI=$resource("http://api.openweathermap.org/data/2.5/forecast/daily",
-		{
-			callback:"JSON_CALLBACK"
-		},
-		{
-			get:{
-					method:"JSONP"
-				}
-		});
-		
-	$scope.weatherResult=$scope.weatherAPI.get({q:$scope.city,cnt:$scope.days});
+weatherApp.controller('MainCtrl',['$scope','$routeParams','WeatherService','renderChart',function($scope,$routeParams,WeatherService,renderChart){
+	$scope.city=WeatherService.city;
+	$scope.days=2;
 	
 	$scope.covertToCelsius=function(degK){
 		return Math.round((degK-272.15));
 	};
 	
-	
 	$scope.covertToDate=function(dt){
 		return new Date(dt * 1000);
-	};	
+	};
+		
+	$scope.time=function(time){
+		console.log(time);
+		return time;
+	};
+	
+	$scope.getForecast=function(){
+		console.log($scope.city+' '+$scope.days);
+		$scope.weatherResult = WeatherService.weatherApi($scope.city, $scope.days);
+		$scope.weatherResult.$promise.then(function(data) {
+			console.log(data.list);
+		}); 
+	};
+	// renderChart.renderUtilChart();
 }]);
