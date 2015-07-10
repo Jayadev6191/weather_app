@@ -9,7 +9,10 @@
 				<div class="form-group">
 					<ul>
 						<li>
-							<select class="form-control" ng-model="weather.state" ng-options="d1.title for d1 in firstOptions" ng-change="selectState(weather,state)" required></select>
+							<select class="form-control" ng-model="weather.state" ng-options="value for (key,value) in states" ng-change="selectState(weather,state)" required></select>
+						</li>
+						<li>
+							<select class="form-control" ng-model="weather.city" ng-options="value for (key,value) in city" ng-change="selectCity(weather,city)" required></select>
 						</li>
 					</ul>
 				</div>
