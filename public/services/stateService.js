@@ -11,5 +11,5 @@ weatherApp.factory('stateService',['$http','$q',function($http,$q){
 		return deferred.promise;
 	};
 	
-	return statesService;
+	return statesService; 
 }]);

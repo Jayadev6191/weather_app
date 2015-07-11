@@ -1,7 +1,7 @@
 body{
-	/*background:url('../images/sky.jpg');*/
+	background:url('../images/morning.jpg');
 	max-width:100%;
-	
+	overflow-y: hidden;
 }
 
 li{
@@ -10,9 +10,12 @@ li{
 
 .panel{
 	width: 70%;
+	height:340px;
+	background-color:#202020;
+	color:white;
 }
 
-.panel > .panel-heading,.panel > .panel-body{
+.panel > .panel-default{
 	background-color:#202020;
 	color:white;
 }
@@ -50,4 +53,14 @@ ol li.active a{
 
 #weather_query_form label{
 	color:black;
+}
+
+
+#region_selection,#weather_report{
+	display:table-cell;
+}
+
+#main img{
+	width:100%;
+	height:100%;
 }
