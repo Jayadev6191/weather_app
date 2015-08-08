@@ -55,7 +55,6 @@ ol li.active a{
 	color:black;
 }
 
-
 #region_selection,#weather_report{
 	display:table-cell;
 }
@@ -63,4 +62,21 @@ ol li.active a{
 #main img{
 	width:100%;
 	height:100%;
+}
+
+#query{
+	float:right;
+	margin-top:200px;
+	padding:20px;
+	width:20%;
+	background-color:gray;
+	border-top-left-radius: 2em;
+	border-bottom-left-radius: 2em;
+	cursor: pointer
+}
+
+#weather_get{
+	padding:20px;
+	top:-30px;
+	display: none;
 }

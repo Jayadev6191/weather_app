@@ -35,4 +35,16 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityServi
 		alert(geoplugin_city());
 	});
 	
+	$(document).on('mouseenter','#location',function(){
+		$('#weather_get').css({ "z-index": "1110",'display':'block'});
+	});
+	
+	$(document).on('mouseenter','#weather_get',function(){
+		$('#weather_get').css('display','block');
+	});
+	
+	$(document).on('mouseleave','#location',function(){
+		$('#weather_get').css({ "z-index": "1000",'display':'block'});
+	});
+	 
 }]);
