@@ -65,11 +65,12 @@ ol li.active a{
 }
 
 #query{
+	display:none;
 	float:right;
 	margin-top:200px;
 	padding:20px;
 	width:20%;
-	background-color:gray;
+	background-color:#294E60;
 	border-top-left-radius: 2em;
 	border-bottom-left-radius: 2em;
 	cursor: pointer
@@ -79,4 +80,9 @@ ol li.active a{
 	padding:20px;
 	top:-30px;
 	display: none;
+}
+
+#location{
+	text-align:center;
+	color:#F1F1F0;
 }
