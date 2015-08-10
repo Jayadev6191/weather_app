@@ -1,67 +1,35 @@
 body{
 	background:url('../images/morning.jpg');
 	max-width:100%;
-	overflow-y: hidden;
-}
-
-li{
-	list-style: none;
-}
-
-.panel{
-	width: 70%;
-	height:340px;
-	background-color:#202020;
-	color:white;
-}
-
-.panel > .panel-default{
-	background-color:#202020;
-	color:white;
-}
-
-#forecast-container{
-	color:white;
-}
-
-#forecast{
-	width: 70%;
-	margin-left:25%;
-}
-
-#forecast i{
-	float:right;
-	color: yellow;
-}
-
-#chart svg {
-  height: 400px;
-}
-
-
-ol li a{
-	color:#000;
-}
-
-ol li.active a{
-	color:lightblue;
-}
-
-#weather_query_form h4{
-	color:black;
-}
-
-#weather_query_form label{
-	color:black;
-}
-
-#region_selection,#weather_report{
-	display:table-cell;
-}
-
-#main img{
-	width:100%;
 	height:100%;
+	overflow-y: hidden;
+	opacity: 0.8;   
+}
+
+
+#current_time{
+	color: #FFFFFF;
+	font-size:60px;
+	margin-left:30px;
+	float:left;
+}
+
+#location{
+	display:none;
+	margin-right:30px;
+	float:right;
+}
+
+#location #marker{
+	margin-left:80px;
+	font-size:60px;
+	color:#FFFFFF;
+}
+
+#location #city{
+	font-size:30px;
+	margin-left:30px;
+	color:#FFFFFF;
 }
 
 #query{
@@ -82,7 +50,80 @@ ol li.active a{
 	display: none;
 }
 
-#location{
-	text-align:center;
-	color:#F1F1F0;
+#dashboard{
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:300px;
+   width:100%;
+   background-color: #ffffff;
+   filter: blur(30px);
+}
+
+#clock_container{
+	float:left;
+}
+
+.clock {
+  border-radius: 50%;
+  border: 0.05em solid #FFFFFF;
+  height: 0.5em;
+  position: relative;
+  width: 0.5em;
+  font-size: 10em;
+  margin-left:30px;
+  margin-top:30px;
+}
+
+.clock:after {
+  background: #FFFFFF;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 9%;
+  height: 9%;
+  z-index: 10;
+}
+
+.minute-container, .hour-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.hour {
+  height: 25%;
+  top: 25%;
+}
+
+.minute {
+  height: 40%;
+  top: 10%;
+}
+
+.hour, .minute {
+  background: #FFFFFF;
+  position: absolute;
+  width: 9%;
+  left: calc(0.5em/2.7);
+  transform-origin: 50% 100%;
+  border-radius: .01em;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.hour-container {
+  animation: rotate 43200s infinite linear;
+}
+.minute-container {
+  animation: rotate 3600s infinite linear;
 }

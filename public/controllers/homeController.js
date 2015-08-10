@@ -1,37 +1,52 @@
-weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityService','WeatherService','currentCityService',function($scope,$resource,stateService,cityService,WeatherService,currentCityService){
+weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityService','WeatherService','currentCityService','geopluginService',function($scope,$resource,stateService,cityService,WeatherService,currentCityService,geopluginService){
+	
+	
+	initLocalClock();
+
+/*
+ * Starts any clocks using the user's local time
+ * From: cssanimation.rocks/clocks
+ */
+	function initLocalClock() {
+	  // Get the local time using JS
+	  var date = new Date;
+	  var minute = date.getMinutes();
+	  var hour = date.getHours();
+	
+	  // Create an object with each hand and it's angle in degrees
+	  var hands = [
+	    {
+	      hand: 'hour',
+	      angle: (hour * 30) + (minute / 2)
+	    },
+	    {
+	      hand: 'minute',
+	      angle: (minute * 6)
+	    }
+	  ];
+	  console.log(hands);
+	  // Loop through each of these hands to set their angle
+	  for (var j = 0; j < hands.length; j++) {
+	    var elements = document.querySelectorAll('.' + hands[j].hand);
+	    for (var k = 0; k < elements.length; k++) {
+	        elements[k].style.webkitTransform = 'rotateZ('+ hands[j].angle +'deg)';
+	        elements[k].style.transform = 'rotateZ('+ hands[j].angle +'deg)';
+	    }
+	  }
+	}
+	
+	
+	
 	stateService.getStates().then(function(data){
 		$scope.states=data;
 	});
 	
-	currentCityService.getCity().then(function(data){
-		console.log(data);
-		geocoder = new google.maps.Geocoder();
-		var latlng = new google.maps.LatLng(data.latitude, data.longitude);
-		
-		geocoder.geocode(
-		    {'latLng': latlng}, 
-		    function(results, status) {
-		        if (status == google.maps.GeocoderStatus.OK) {
-		                if (results[0]) {
-		                    var add= results[0].formatted_address ;
-		                    var  value=add.split(",");
-		
-		                    count=value.length;
-		                    country=value[count-1];
-		                    state=value[count-2];
-		                    city=value[count-3];
-		                    alert("city name is: " + city);
-		                }
-		                else  {
-		                    alert("address not found");
-		                }
-		        }
-		         else {
-		            alert("Geocoder failed due to: " + status);
-		        }
-		    }
-		);
-		
+	currentCityService.getCity().then(function(geopoints){
+		geopluginService.getCurrentLocation(geopoints).then(function(data){
+			console.log(data);
+			$scope.city=data;
+			$('#location').css('display','block');
+		});
 	});
 	
 	

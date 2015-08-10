@@ -5,9 +5,6 @@ weatherApp.factory('currentCityService',['$http','$q',function($http,$q){
 		var deferred = $q.defer();
 		    if (navigator.geolocation) {
 		        navigator.geolocation.getCurrentPosition(function(position){
-		    		console.log(position);
-				    console.log("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
-				     
 				    var coordinates={
 				    	"latitude":	position.coords.latitude,
 				    	"longitude": position.coords.longitude
