@@ -1,5 +1,7 @@
 weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityService','WeatherService','currentCityService','geopluginService',function($scope,$resource,stateService,cityService,WeatherService,currentCityService,geopluginService){
 	
+	// var container=document.getElementById("contact_column_inner");
+	// console.log(container);
 	
 	initLocalClock();
 
@@ -9,31 +11,38 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityServi
  */
 	function initLocalClock() {
 	  // Get the local time using JS
-	  var date = new Date;
-	  var minute = date.getMinutes();
-	  var hour = date.getHours();
+	  $scope.date = new Date;
+	  $scope.minute = $scope.date.getMinutes();
+	  $scope.seconds = $scope.date.getSeconds();
+	  $scope.hour = $scope.date.getHours();
+	  
+	  
 	
 	  // Create an object with each hand and it's angle in degrees
-	  var hands = [
+	  $scope.hands = [
 	    {
 	      hand: 'hour',
-	      angle: (hour * 30) + (minute / 2)
+	      angle: ($scope.hour * 30) + ($scope.minute / 2)
 	    },
 	    {
 	      hand: 'minute',
-	      angle: (minute * 6)
+	      angle: ($scope.minute * 6)
 	    }
 	  ];
-	  console.log(hands);
-	  // Loop through each of these hands to set their angle
-	  for (var j = 0; j < hands.length; j++) {
-	    var elements = document.querySelectorAll('.' + hands[j].hand);
-	    for (var k = 0; k < elements.length; k++) {
-	        elements[k].style.webkitTransform = 'rotateZ('+ hands[j].angle +'deg)';
-	        elements[k].style.transform = 'rotateZ('+ hands[j].angle +'deg)';
-	    }
-	  }
+	  
+	  var t = setTimeout(function(){initLocalClock()},500);
+	  $('#time').html($scope.hour+':'+$scope.minute+' '+meridian);
 	}
+	
+	
+			var meridian;
+			if($scope.hour >= 12){
+				meridian="p.m";
+			}else{
+				meridian="a.m";
+			}
+			// console.log($elem);
+			// $elem.css('webkitTransform',);
 	
 	
 	

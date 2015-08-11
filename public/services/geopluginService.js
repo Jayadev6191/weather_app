@@ -9,7 +9,6 @@ weatherApp.factory('geopluginService',['$http','$q',function($http,$q){
 		
 		geocoder.geocode({'latLng': latlng},function(results, status) {
 		        if (status == google.maps.GeocoderStatus.OK) {
-		        	console.log(results);
 		                if (results[0]) {
 		                    var add= results[0].formatted_address ;
 		                    var  value=add.split(",");
