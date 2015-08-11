@@ -52,12 +52,13 @@ body{
 
 #dashboard{
    position:fixed;
-   left:0px;
    bottom:0px;
-   height:300px;
+   height:250px;
    width:100%;
-   background-color: #ffffff;
-   filter: blur(30px);
+   background-color: #202020;
+   /*filter: blur(30px);*/
+   /*margin:30px 30px;*/
+  /*opaity:*/
 }
 
 #clock_container{

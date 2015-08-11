@@ -35,16 +35,12 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityServi
 	}
 	
 	
-			var meridian;
-			if($scope.hour >= 12){
-				meridian="p.m";
-			}else{
-				meridian="a.m";
-			}
-			// console.log($elem);
-			// $elem.css('webkitTransform',);
-	
-	
+	var meridian;
+	if($scope.hour >= 12){
+		meridian="p.m";
+	}else{
+		meridian="a.m";
+	}
 	
 	stateService.getStates().then(function(data){
 		$scope.states=data;
@@ -52,9 +48,13 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityServi
 	
 	currentCityService.getCity().then(function(geopoints){
 		geopluginService.getCurrentLocation(geopoints).then(function(data){
-			console.log(data);
 			$scope.city=data;
 			$('#location').css('display','block');
+			
+			WeatherService.getWeather($scope.city).then(function(data){
+				
+			});
+			
 		});
 	});
 	
@@ -95,9 +95,6 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityServi
 		$('#weather_get').css({ "z-index": "1110",'display':'block'});
 	});
 	
-	// $(document).on('mouseenter','#weather_get',function(){
-		// $('#weather_get').css('display','block');
-	// });
 	
 	$(document).on('mouseleave','#query',function(){
 		$('#weather_get').css({ 'display':'none'});
