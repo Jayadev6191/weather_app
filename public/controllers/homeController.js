@@ -12,6 +12,7 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityServi
 	function initLocalClock() {
 	  // Get the local time using JS
 	  $scope.date = new Date;
+	  // console.log($scope.date.getDay());
 	  $scope.minute = $scope.date.getMinutes();
 	  $scope.seconds = $scope.date.getSeconds();
 	  $scope.hour = $scope.date.getHours();
@@ -30,6 +31,10 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityServi
 	    }
 	  ];
 	  
+	  if($scope.minute <10){
+		$scope.minute='0'+$scope.minute;
+	  }
+	  
 	  var t = setTimeout(function(){initLocalClock()},500);
 	  $('#time').html($scope.hour+':'+$scope.minute+' '+meridian);
 	}
@@ -42,6 +47,7 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityServi
 		meridian="a.m";
 	}
 	
+	
 	stateService.getStates().then(function(data){
 		$scope.states=data;
 	});
@@ -52,7 +58,15 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityServi
 			$('#location').css('display','block');
 			
 			WeatherService.getWeather($scope.city).then(function(data){
-				
+					console.log(data);
+					$scope.temp={
+						"temperature":data.item.condition.temp,
+						"text":data.item.condition.text
+					};
+					
+					$scope.forecast=data.item.forecast;
+					console.log($scope.forecast);
+					
 			});
 			
 		});
@@ -87,14 +101,10 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityServi
 		return new Date(dt * 1000);
 	};
 	
-	$(document).ready(function(){
-		// alert(geoplugin_city());
-	});
 	
 	$(document).on('mouseenter','#query',function(){
 		$('#weather_get').css({ "z-index": "1110",'display':'block'});
 	});
-	
 	
 	$(document).on('mouseleave','#query',function(){
 		$('#weather_get').css({ 'display':'none'});

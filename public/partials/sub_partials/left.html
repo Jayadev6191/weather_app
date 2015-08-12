@@ -48,9 +48,37 @@
 		 	</div> -->
 		 	
 		 	<div id="dashboard">
-		 		<div></div>
-		 		<div></div>
-		 		<div></div>
+		 		<div class="col-md-12">
+		 			<div class="col-md-3" style="color:white;border-right:1px solid gray;height:100%;">
+		 				<div class="col-md-6">
+		 					<div id="temp">{{temp.temperature}}&#176</div>
+		 					<div>{{temp.text}} <i class="cloudy"></i></div>
+		 				</div>
+		 				<div class="col-md-6" currentWeathericon>
+		 					
+		 				</div>
+		 			</div>
+		 			<div class="col-md-3" id="forecast" style="color:white">
+		 				<div ng-repeat="obj in forecast" weathericon>
+		 					<article type={{obj.day}}>
+		 						<table class="table">
+		 							<tr>
+			 							<td>{{obj.date}},{{obj.day}}</td>
+			 							<td><i></i></td>
+			 							<td>{{obj.high}}</td>
+			 							<td>{{obj.low}}</td>
+		 							</tr>
+		 						</table>
+		 					</article>
+		 				</div>
+		 			</div>
+			 		<div class="col-md-3" id="type" style="color:white">
+			 			
+			 		</div>
+			 		<div class="col-md-3" id="place" style="color:white">
+			 			
+			 		</div>
+		 		</div>
 		 	</div>
 		 	
 	</div>

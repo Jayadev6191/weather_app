@@ -6,8 +6,7 @@ weatherApp.factory('WeatherService',['$resource','$http','$q',function($resource
 			console.log(city);
 			var city_obj={'city':city};
 			$http.post('/',city_obj).success(function(data){
-					console.log(data);
-					deferred.resolve('hi');
+					deferred.resolve(data);
 			},function(error){
 					deferred.resolve(error);
 			});

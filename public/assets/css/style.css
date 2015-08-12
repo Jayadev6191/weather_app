@@ -16,14 +16,14 @@ body{
 
 #location{
 	display:none;
-	margin-right:30px;
+	margin-right: 65px;
 	float:right;
 }
 
 #location #marker{
 	margin-left: 65px;
-    font-size: 52px;
     color: #FFFFFF;
+    font-size: 44px;
 }
 
 #location #city{
@@ -53,12 +53,37 @@ body{
 #dashboard{
    position:fixed;
    bottom:0px;
-   height:250px;
+   height:320px;
    width:100%;
    background-color: #202020;
    /*filter: blur(30px);*/
    /*margin:30px 30px;*/
   /*opaity:*/
+}
+
+#dashboard .col-md-3{
+	text-align:left;
+	height:350px;
+	overflow-y: scroll;
+}
+
+
+#dashboard .col-md-3 article table tr td:not(:last-child){
+	/*padding:0px 5px;
+	border-right:1px solid #FFFFFF;*/
+}
+
+#dashboard .col-md-3 .max{
+	margin-left:30px;
+}
+
+#dashboard .col-md-3 .min{
+	margin-left:30px;
+}
+
+
+#dashboard #temp{
+	font-size:60px;
 }
 
 #clock_container{
@@ -72,7 +97,7 @@ body{
     position: relative;
     width: 0.3em;
     font-size: 9em;
-    margin-left: 50px;
+    margin-left: 60px;
     margin-top: 10px;
 }
 
@@ -139,4 +164,8 @@ body{
 }
 .minute-container {
   animation: rotate 3600s infinite linear;
+}
+
+i.cloudy:before{
+	content: f002;
 }

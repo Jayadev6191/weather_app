@@ -22,16 +22,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/scrape', scrape);
 app.use('/users', users);
 
-
 app.post('/',function(req,res){
 	console.log(req.body.city);
-	var query = new YQL('select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="hyderabad")');
-	query.exec(function(data,err) {
+	var query = new YQL('select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="'+req.body.city+'")');
+	query.exec(function(err,data) {
 	  console.log(data);
-	  // var location = data.query.results.channel.location;
-	  // console.log(location);
-	  // var condition = data.query.results.channel.item.condition;
-// 	  
+	  var location = data.query.results.channel.location;
+	  var condition = data.query.results.channel.item.condition;
+	  console.log(location);
+	  res.send(data.query.results.channel);
 	  // console.log('The current weather in ' + location.city + ', ' + location.region + ' is ' + condition.temp + ' degrees.');
 	});
 });
