@@ -8,28 +8,47 @@ weatherApp.factory('WeatherService',['$resource','$http','$q',function($resource
 			$http.post('/',city_obj).success(function(data){
 					deferred.resolve(data);
 			},function(error){
-					deferred.resolve(error);
+					deferred.reject(error);
 			});
 			
 			return deferred.promise;
 		};
-		// city:"Santa Clara,CA",
-		// weatherApi:function(city,days){
-			// this.city=city;
-			// this.days=days;	
-			// // rest call
-			// var weatherAPI=$resource("http://api.openweathermap.org/data/2.5/forecast/daily",
-				// {
-					// callback:"JSON_CALLBACK"
-				// },
-				// {
-					// get:{
-							// method:"JSONP"
-						// }
-				// });
-			// var weatherResult=weatherAPI.get({q:this.city,cnt:this.days});
-			// return weatherResult;
-		// }
+		
+		weather_obj.getWeathericon=function(text){
+			var deferred = $q.defer();
+			var icon;
+			switch(text){
+				
+				case 'Sunny':
+						icon="wi wi-day-sunny";
+						break;
+						
+				case 'Mostly Sunny':
+						icon="wi wi-day-sunny";
+						break;
+						
+				case 'Cloudy':
+						icon="wi wi-day-cloudy";
+						break;
+				
+				case 'Partly Cloudy':
+						icon="wi wi-day-cloudy";
+						break;
+				
+				case 'Clear':
+						icon="wi wi-day-sunny";
+						break;
+						
+				case 'Mostly Clear':
+						icon="wi wi-day-sunny";
+						break;
+						
+				}
+			
+			deferred.resolve(icon);
+			
+			return deferred.promise;
+		};
 		
 		return weather_obj;
 	

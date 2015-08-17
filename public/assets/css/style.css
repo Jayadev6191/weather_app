@@ -86,6 +86,14 @@ body{
 	font-size:60px;
 }
 
+#dashboard #current_icon{
+	margin-top:20px;
+}
+
+#dashboard #current_icon article i{
+	font-size:90px;
+}
+
 #clock_container{
 	float:left;
 }

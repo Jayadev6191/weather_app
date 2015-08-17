@@ -50,13 +50,7 @@
 		 	<div id="dashboard">
 		 		<div class="col-md-12">
 		 			<div class="col-md-3" style="color:white;border-right:1px solid gray;height:100%;">
-		 				<div class="col-md-6">
-		 					<div id="temp">{{temp.temperature}}&#176</div>
-		 					<div>{{temp.text}} <i class="cloudy"></i></div>
-		 				</div>
-		 				<div class="col-md-6" currentWeathericon>
-		 					
-		 				</div>
+		 				<currentweather></currentweather>
 		 			</div>
 		 			<div class="col-md-3" id="forecast" style="color:white">
 		 				<div ng-repeat="obj in forecast" weathericon>

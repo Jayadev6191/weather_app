@@ -1,5 +1,5 @@
 weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityService','WeatherService','currentCityService','geopluginService',function($scope,$resource,stateService,cityService,WeatherService,currentCityService,geopluginService){
-	
+	$scope.a=10;
 	// var container=document.getElementById("contact_column_inner");
 	// console.log(container);
 	
@@ -61,8 +61,18 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityServi
 					console.log(data);
 					$scope.temp={
 						"temperature":data.item.condition.temp,
+						"date":data.item.pubDate,
 						"text":data.item.condition.text
 					};
+					console.log(data.item.pubDate);
+					
+					$scope.text=data.item.condition.text;
+					console.log($scope.text);
+					WeatherService.getWeathericon($scope.text).then(function(data){
+						console.log(data);
+						// $(document).find('#current_icon article i').attr('class',data);
+						$('#current_icon').find('article i').attr('class',data);
+					});
 					
 					$scope.forecast=data.item.forecast;
 					console.log($scope.forecast);
