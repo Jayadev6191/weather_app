@@ -1,7 +1,9 @@
-weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityService','WeatherService','currentCityService','geopluginService',function($scope,$resource,stateService,cityService,WeatherService,currentCityService,geopluginService){
-	$scope.a=10;
+weatherApp.controller('HomeCtrl',['$scope','stateService','cityService','WeatherService','currentCityService','geopluginService','getDateService','iconService',function($scope,stateService,cityService,WeatherService,currentCityService,geopluginService,getDateService,iconService){
 	// var container=document.getElementById("contact_column_inner");
 	// console.log(container);
+	
+	$scope.today_date=getDateService.getDate();
+	
 	
 	initLocalClock();
 
@@ -61,22 +63,26 @@ weatherApp.controller('HomeCtrl',['$scope','$resource','stateService','cityServi
 					console.log(data);
 					$scope.temp={
 						"temperature":data.item.condition.temp,
-						"date":data.item.pubDate,
+						"date":$scope.today_date,
 						"text":data.item.condition.text
 					};
 					console.log(data.item.pubDate);
-					
 					$scope.text=data.item.condition.text;
-					console.log($scope.text);
+					console.log(iconService.getIcon($scope.text));
+					$('#current_icon').find('article i').attr('class',data);
+					
 					WeatherService.getWeathericon($scope.text).then(function(data){
-						console.log(data);
 						// $(document).find('#current_icon article i').attr('class',data);
-						$('#current_icon').find('article i').attr('class',data);
+						if(data!=undefined){
+							$('#current_icon').find('article i').attr('class',data);	
+						}
+						else{
+							alert("weather type"+$scope.text+"undefined");
+						}
 					});
 					
-					$scope.forecast=data.item.forecast;
+					$scope.forecast=data.item.forecast.splice(1,data.item.forecast.length);
 					console.log($scope.forecast);
-					
 			});
 			
 		});

@@ -42,7 +42,10 @@ weatherApp.factory('WeatherService',['$resource','$http','$q',function($resource
 				case 'Mostly Clear':
 						icon="wi wi-day-sunny";
 						break;
-						
+				
+				case 'Fair':
+						icon="wi wi-day-sunny";
+						break;
 				}
 			
 			deferred.resolve(icon);

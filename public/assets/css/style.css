@@ -83,15 +83,23 @@ body{
 
 
 #dashboard #temp{
-	font-size:60px;
+	font-size: 85px;
 }
 
 #dashboard #current_icon{
-	margin-top:20px;
+	margin-top: 25px;
+}
+
+#dashboard #current_icon article{
+	text-align:center;
 }
 
 #dashboard #current_icon article i{
-	font-size:90px;
+	font-size: 55px;
+}
+
+#icon_text{
+	margin-top: 10px;	
 }
 
 #clock_container{
