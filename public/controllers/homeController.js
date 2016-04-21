@@ -73,11 +73,11 @@ weatherApp.controller('HomeCtrl',['$scope','stateService','cityService','Weather
 					
 					WeatherService.getWeathericon($scope.text).then(function(data){
 						// $(document).find('#current_icon article i').attr('class',data);
-						if(data!=undefined){
+						if(data!==undefined){
 							$('#current_icon').find('article i').attr('class',data);	
 						}
 						else{
-							alert("weather type"+$scope.text+"undefined");
+							console.log("weather type"+$scope.text+"undefined");
 						}
 					});
 					
